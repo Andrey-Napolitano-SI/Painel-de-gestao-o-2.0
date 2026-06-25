@@ -1,0 +1,44 @@
+{% extends 'estoque/base.html' %}
+
+{% block content %}
+
+<h1>DASHBOARD</h1>
+
+<div class="cards">
+    <div class="card">
+        <h3>Total de Itens</h3>
+        <p>{{ total_itens }}</p>
+    </div>
+
+    <a href="{% url 'estoque_baixo' %}" class="card amarelo">
+    <h3>Estoque Baixo</h3>
+    <p>{{ itens_baixos }}</p>
+</a>
+
+    <div class="card vermelho">
+        <h3>Estoque Crítico</h3>
+        <p>{{ itens_criticos }}</p>
+    </div>
+</div>
+
+<h2>Últimas Movimentações</h2>
+
+<table>
+    <tr>
+        <th>Produto</th>
+        <th>Tipo</th>
+        <th>Quantidade</th>
+        <th>Responsável</th>
+    </tr>
+
+    {% for mov in movimentacoes %}
+    <tr>
+        <td>{{ mov.produto }}</td>
+        <td>{{ mov.tipo }}</td>
+        <td>{{ mov.quantidade }}</td>
+        <td>{{ mov.responsavel }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

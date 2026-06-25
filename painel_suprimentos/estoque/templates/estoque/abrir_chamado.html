@@ -1,0 +1,36 @@
+{% extends 'estoque/base.html' %}
+
+{% block content %}
+
+<h1>Abrir Chamado</h1>
+
+<div class="container-form">
+
+    <form method="POST" class="formulario">
+
+        {% csrf_token %}
+
+        <div class="campo">
+            <label>Título</label>
+            {{ form.titulo }}
+        </div>
+
+        <div class="campo">
+            <label>Categoria</label>
+            {{ form.categoria }}
+        </div>
+
+        <div class="campo">
+            <label>Descrição</label>
+            {{ form.descricao }}
+        </div>
+
+        <button type="submit" class="btn">
+            Abrir Chamado
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'estoque/base.html' %}
+
+{% block content %}
+
+<h1>EDITAR ITEM</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">
+        Atualizar
+    </button>
+
+</form>
+
+{% endblock %}

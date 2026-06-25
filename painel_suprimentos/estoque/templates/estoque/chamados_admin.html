@@ -1,0 +1,77 @@
+{% extends 'estoque/base.html' %}
+
+{% block content %}
+
+<h1>Chamados Abertos</h1>
+
+<div class="table-container">
+
+    <table class="tabela">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuário</th>
+                <th>Título</th>
+                <th>Categoria</th>
+                <th>Status</th>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for chamado in chamados %}
+
+            <tr>
+
+                <td>#{{ chamado.id }}</td>
+
+                <td>{{ chamado.usuario.username }}</td>
+
+                <td>{{ chamado.titulo }}</td>
+
+                <td>{{ chamado.categoria }}</td>
+
+                <td>
+
+    {% if chamado.status == 'ABERTO' %}
+        <span class="badge bg-success">
+            Aberto
+        </span>
+
+    {% elif chamado.status == 'ANDAMENTO' %}
+        <span class="badge bg-warning text-dark">
+            Em andamento
+        </span>
+
+    {% elif chamado.status == 'FINALIZADO' %}
+        <span class="badge bg-secondary">
+            Finalizado
+        </span>
+    {% endif %}
+
+</td>
+
+                <td>{{ chamado.data_abertura|date:"d/m/Y H:i" }}</td>
+
+                <td>
+
+                    <a href="{% url 'detalhe_chamado' chamado.id %}" class="btn">
+                        Abrir
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

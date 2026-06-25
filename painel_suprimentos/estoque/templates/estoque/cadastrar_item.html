@@ -1,0 +1,51 @@
+{% extends 'estoque/base.html' %}
+
+{% block content %}
+
+<div class="container-form">
+
+    <h1>Cadastrar Item</h1>
+
+    <form method="POST" class="formulario">
+
+        {% csrf_token %}
+
+        <div class="campo">
+            <label>Nome</label>
+            {{ form.nome }}
+        </div>
+
+        <div class="campo">
+            <label>Categoria</label>
+            {{ form.categoria }}
+        </div>
+
+        <div class="campo">
+            <label>Quantidade</label>
+            {{ form.quantidade }}
+        </div>
+
+        <div class="campo">
+            <label>Estoque Mínimo</label>
+            {{ form.minimo }}
+        </div>
+
+        <div class="campo">
+            <label>Local</label>
+            {{ form.local }}
+        </div>
+
+        <div class="campo">
+            <label>Status</label>
+            {{ form.status }}
+        </div>
+
+        <button type="submit" class="btn">
+            Salvar Item
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

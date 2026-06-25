@@ -1,0 +1,36 @@
+{% extends 'estoque/base.html' %}
+
+{% block content %}
+
+<h1>PRODUTOS</h1>
+
+<table>
+
+    <tr>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Quantidade</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for produto in produtos %}
+
+    <tr>
+        <td>{{ produto.nome }}</td>
+        <td>{{ produto.categoria }}</td>
+        <td>{{ produto.quantidade }}</td>
+        <td>{{ produto.status }}</td>
+
+        <td>
+            <a href="{% url 'editar_item' produto.id %}">
+                Editar
+            </a>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

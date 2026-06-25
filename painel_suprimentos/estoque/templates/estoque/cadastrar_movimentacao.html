@@ -1,0 +1,41 @@
+{% extends 'estoque/base.html' %}
+
+{% block content %}
+
+<div class="container-form">
+
+    <h1>Nova Movimentação</h1>
+
+    <form method="POST" class="formulario">
+
+        {% csrf_token %}
+
+        <div class="campo">
+            <label>Produto</label>
+            {{ form.produto }}
+        </div>
+
+        <div class="campo">
+            <label>Tipo</label>
+            {{ form.tipo }}
+        </div>
+
+        <div class="campo">
+            <label>Quantidade</label>
+            {{ form.quantidade }}
+        </div>
+
+        <div class="campo">
+            <label>Responsável</label>
+            {{ form.responsavel }}
+        </div>
+
+        <button type="submit" class="btn">
+            Salvar Movimentação
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
