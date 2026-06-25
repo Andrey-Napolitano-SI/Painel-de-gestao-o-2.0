@@ -87,12 +87,5 @@ path(
     views.excluir_chamado,
     name='excluir_chamado'
 ),
-
-path(
-    'chamado/admin/<int:id>/',
-    views.e
-    chamados_admin,
-    name='excluir_chamado'
-),
-   
+ 
 ]
