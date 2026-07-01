@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>BUCETA MOLHADA</title>
+    <title>Painel TI - HOT BUTTERED</title>
 
-    <link rel="icon" type="image/x-icon" href="{% static 'estoque/images/favicon.ico' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -41,60 +41,65 @@
 
         </div>
 
+        <button class="sidebar-toggle" type="button" aria-label="Minimizar menu">
+            <i class="fa-solid fa-angle-double-left"></i>
+            <span class="toggle-label">Ocultar</span>
+        </button>
+
         <nav class="menu">
 
             {% if request.user.is_staff %}
 
-                <a href="{% url 'dashboard' %}">
+                <a href="{% url 'dashboard' %}" title="Dashboard">
                     <i class="fa-solid fa-chart-line"></i>
-                    Dashboard
+                    <span class="menu-label">Dashboard</span>
                 </a>
 
-                <a href="{% url 'produtos' %}">
+                <a href="{% url 'produtos' %}" title="Produtos">
                     <i class="fa-solid fa-boxes-stacked"></i>
-                    Produtos
+                    <span class="menu-label">Produtos</span>
                 </a>
 
 
                 <a href="{% url 'movimentacoes' %}">
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                    Movimentações
+                    <span class="menu-label">Movimentações</span>
                 </a>
 <a href="{% url 'chamados_admin' %}">
                     <i class="fa-solid fa-headset"></i>
-                    Chamados
+                    <span class="menu-label">Chamados</span>
                 </a>
                 
                 <a href="{% url 'cadastrar_item' %}">
                     <i class="fa-solid fa-square-plus"></i>
-                    Cadastrar Item
+                    <span class="menu-label">Cadastrar Item</span>
                 </a>
 
                 <a href="{% url 'cadastrar_movimentacao' %}">
                     <i class="fa-solid fa-clipboard-list"></i>
-                    Nova Movimentação
+                    <span class="menu-label">Nova Movimentação</span>
                 </a>
 
                 <a href="{% url 'estoque_baixo' %}">
                     <i class="fa-solid fa-triangle-exclamation"></i>
-                    Estoque Baixo
+                    <span class="menu-label">Estoque Baixo</span>
                 </a>
 
                 <a href="/admin/">
                     <i class="fa-solid fa-user-shield"></i>
-                    Administração
+                    <span class="menu-label">Administração</span>
                 </a>
 
             {% else %}
 
                 <a href="{% url 'abrir_chamado' %}">
                     <i class="fa-solid fa-screwdriver-wrench"></i>
-                    Abrir Chamado
+                    <span class="menu-label">Abrir Chamado</span>
                 </a>
 
                 <a href="{% url 'meus_chamados' %}">
                     <i class="fa-solid fa-ticket"></i>
-                    Meus Chamados
+                    <span class="menu-label">Meus Chamados</span>
                 </a>
 
             {% endif %}
@@ -151,19 +156,20 @@
 
         const botaoUsuario = document.querySelector(".usuario-btn");
         const menuDropdown = document.querySelector(".dropdown-menu");
+        const sidebar = document.querySelector('.sidebar');
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
 
         botaoUsuario.addEventListener("click", function(event){
-
             event.stopPropagation();
-
             menuDropdown.classList.toggle("ativo");
-
         });
 
         document.addEventListener("click", function(){
-
             menuDropdown.classList.remove("ativo");
+        });
 
+        sidebarToggle.addEventListener('click', function(){
+            sidebar.classList.toggle('collapsed');
         });
 
     </script>
