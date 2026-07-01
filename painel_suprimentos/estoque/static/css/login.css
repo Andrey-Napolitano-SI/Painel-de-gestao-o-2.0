@@ -30,12 +30,13 @@ body{
 /* CARD LOGIN */
 
 .login-container{
-    width:420px;
+    width:400px;
+    min-height: 620px;
     background:rgba(17,24,39,0.92);
     border:1px solid #1e293b;
     backdrop-filter:blur(12px);
     border-radius:24px;
-    padding:45px;
+    padding:40px 40px 50px;
     box-shadow:0 0 40px rgba(0,0,0,0.4);
     position:relative;
     z-index:1;
@@ -109,8 +110,9 @@ input:focus{
 /* BOTÃO */
 
 button{
-    margin-top:30px;
-    padding:16px;
+    display:block;
+    margin:30px auto 0;
+    padding:16px 32px;
     border:none;
     border-radius:14px;
     background:linear-gradient(135deg,#2563eb,#1d4ed8);
