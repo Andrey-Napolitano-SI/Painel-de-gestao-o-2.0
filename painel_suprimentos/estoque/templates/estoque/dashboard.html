@@ -5,20 +5,20 @@
 <h1>DASHBOARD</h1>
 
 <div class="cards">
-    <div class="card">
+    <a href="{% url 'produtos' %}" class="card azul">
         <h3>Total de Itens</h3>
         <p>{{ total_itens }}</p>
-    </div>
+    </a>
 
     <a href="{% url 'estoque_baixo' %}" class="card amarelo">
-    <h3>Estoque Baixo</h3>
-    <p>{{ itens_baixos }}</p>
-</a>
+        <h3>Estoque Baixo</h3>
+        <p>{{ itens_baixos }}</p>
+    </a>
 
-    <div class="card vermelho">
+    <a href="{% url 'produtos' %}?status=CRITICO" class="card vermelho">
         <h3>Estoque Crítico</h3>
         <p>{{ itens_criticos }}</p>
-    </div>
+    </a>
 </div>
 
 <h2>Últimas Movimentações</h2>
