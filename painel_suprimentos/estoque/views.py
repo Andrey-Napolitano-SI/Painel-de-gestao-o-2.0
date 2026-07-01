@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 
 from .models import Produto, Movimentacao, Chamado
-from .forms import ProdutoForm, MovimentacaoForm, ChamadoForm
+from .forms import ProdutoForm, MovimentacaoForm, ChamadoForm, ChamadoEditForm
 
 def somente_admin(view_func):
 
@@ -53,7 +53,11 @@ def dashboard(request):
 @somente_admin
 def produtos(request):
 
-    produtos = Produto.objects.all()
+    status = request.GET.get('status')
+    if status:
+        produtos = Produto.objects.filter(status=status)
+    else:
+        produtos = Produto.objects.all()
 
     return render(request, 'estoque/produtos.html', {
         'produtos': produtos
@@ -244,11 +248,21 @@ def detalhe_chamado(request, id):
 
 
 @login_required
+@somente_admin
 def editar_chamado(request, id):
 
     chamado = get_object_or_404(Chamado, id=id)
 
+    if request.method == 'POST':
+        form = ChamadoEditForm(request.POST, instance=chamado)
+        if form.is_valid():
+            form.save()
+            return redirect('detalhe_chamado', id=chamado.id)
+    else:
+        form = ChamadoEditForm(instance=chamado)
+
     return render(request, 'estoque/editar_chamado.html', {
+        'form': form,
         'chamado': chamado
     })
 
