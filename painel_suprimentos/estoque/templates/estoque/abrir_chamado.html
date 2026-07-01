@@ -5,8 +5,8 @@
 <div class="container-form">
 
     <div class="form-card-header">
-        <h1>Abrir Chamado</h1>
-        <p>Descreva o problema para que a equipe possa ajudar rapidamente.</p>
+        <h1>Cadastrar Item</h1>
+        <p>Cadastre novos produtos com organização e controle.</p>
     </div>
 
     <form method="POST" class="formulario">
@@ -14,8 +14,8 @@
         {% csrf_token %}
 
         <div class="campo">
-            <label>Título</label>
-            {{ form.titulo }}
+            <label>Nome</label>
+            {{ form.nome }}
         </div>
 
         <div class="campo">
@@ -24,12 +24,27 @@
         </div>
 
         <div class="campo">
-            <label>Descrição</label>
-            {{ form.descricao }}
+            <label>Quantidade</label>
+            {{ form.quantidade }}
+        </div>
+
+        <div class="campo">
+            <label>Estoque Mínimo</label>
+            {{ form.minimo }}
+        </div>
+
+        <div class="campo">
+            <label>Local</label>
+            {{ form.local }}
+        </div>
+
+        <div class="campo">
+            <label>Status</label>
+            {{ form.status }}
         </div>
 
         <button type="submit" class="btn">
-            Abrir Chamado
+            Salvar Item
         </button>
 
     </form>
