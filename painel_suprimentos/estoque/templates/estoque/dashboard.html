@@ -1,67 +1,44 @@
 {% extends 'estoque/base.html' %}
 
-{% block title %}Detalhes do Chamado{% endblock %}
-
 {% block content %}
 
-<div class="container-form detalhe-card">
+<h1>DASHBOARD</h1>
 
-    <div class="detail-header">
-        <div>
-            <h1>Detalhes do Chamado</h1>
-            <p class="detail-subtitle">Chamado #{{ chamado.id }}</p>
-        </div>
+<div class="cards">
+    <a href="{% url 'produtos' %}" class="card azul">
+        <h3>Total de Itens</h3>
+        <p>{{ total_itens }}</p>
+    </a>
 
-        <div class="detail-status">
-            {% if chamado.status == 'ABERTO' %}
-                <span class="badge bg-success">Aberto</span>
-            {% elif chamado.status == 'ANDAMENTO' %}
-                <span class="badge bg-warning">Em andamento</span>
-            {% else %}
-                <span class="badge bg-secondary">Finalizado</span>
-            {% endif %}
-        </div>
-    </div>
+    <a href="{% url 'estoque_baixo' %}" class="card amarelo">
+        <h3>Estoque Baixo</h3>
+        <p>{{ itens_baixos }}</p>
+    </a>
 
-    <div class="detail-grid">
-
-        <div class="detail-item">
-            <span class="detail-label">Título</span>
-            <p class="detail-value">{{ chamado.titulo }}</p>
-        </div>
-
-        <div class="detail-item">
-            <span class="detail-label">Solicitante</span>
-            <p class="detail-value">{{ chamado.usuario.username }}</p>
-        </div>
-
-        <div class="detail-item">
-            <span class="detail-label">Categoria</span>
-            <p class="detail-value">{{ chamado.categoria }}</p>
-        </div>
-
-        <div class="detail-item">
-            <span class="detail-label">Data de abertura</span>
-            <p class="detail-value">{{ chamado.data_abertura|date:"d/m/Y H:i" }}</p>
-        </div>
-
-    </div>
-
-    <div class="detail-section">
-        <span class="detail-label">Descrição</span>
-        <div class="detail-box">
-            {{ chamado.descricao }}
-        </div>
-    </div>
-
-    <div class="detail-actions">
-        <a href="{% url 'chamados_admin' %}" class="btn btn-secondary detail-action-btn">Voltar</a>
-        <div class="action-group">
-            <a href="{% url 'editar_chamado' chamado.id %}" class="btn btn-warning detail-action-btn">Editar</a>
-            <a href="{% url 'excluir_chamado' chamado.id %}" class="btn btn-danger detail-action-btn">Excluir</a>
-        </div>
-    </div>
-
+    <a href="{% url 'produtos' %}?status=CRITICO" class="card vermelho">
+        <h3>Estoque Crítico</h3>
+        <p>{{ itens_criticos }}</p>
+    </a>
 </div>
+
+<h2>Últimas Movimentações</h2>
+
+<table>
+    <tr>
+        <th>Produto</th>
+        <th>Tipo</th>
+        <th>Quantidade</th>
+        <th>Responsável</th>
+    </tr>
+
+    {% for mov in movimentacoes %}
+    <tr>
+        <td>{{ mov.produto }}</td>
+        <td>{{ mov.tipo }}</td>
+        <td>{{ mov.quantidade }}</td>
+        <td>{{ mov.responsavel }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}
