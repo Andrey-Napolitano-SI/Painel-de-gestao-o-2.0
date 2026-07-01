@@ -1,0 +1,70 @@
+# .gitignore
+# Python
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Django
+*.log
+db.sqlite3
+celerybeat-schedule
+celerybeat.pid
+db.sqlite3-journal
+/static_collected/
+/staticfiles/
+/media/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+*.bak
+
+# Tenant schemas
+tenant_migrations/
+
+# Site templates (88 templates HTML/CSS/JS - muito pesado para commit)
+site_templates/
+
+# Cache
+.cache/
+*.cache
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# Local testing
+*.local.*
+local_settings.py
+
+# Database backups
+*.sql
+backup_*.sql
+
+# Backup dumps
+backups/
+*.dump
