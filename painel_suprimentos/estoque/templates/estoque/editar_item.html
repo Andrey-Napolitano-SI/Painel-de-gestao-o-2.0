@@ -1,61 +1,52 @@
 {% extends 'estoque/base.html' %}
 
-{% block title %}Editar Chamado{% endblock %}
-
 {% block content %}
 
-<div class="container-form detalhe-card">
+<div class="container-form">
 
-    <div class="detail-header">
-        <div>
-            <h1>Editar Chamado</h1>
-            <p class="detail-subtitle">Atualize o ticket e o status de atendimento.</p>
-        </div>
-
-        <div class="detail-status">
-            <span class="badge bg-secondary">#{{ chamado.id }}</span>
-        </div>
+    <div class="form-card-header">
+        <h1>Editar Item</h1>
+        <p>Atualize as informações do produto de forma rápida e segura.</p>
     </div>
 
     <form method="POST" class="formulario">
-        {% csrf_token %}
 
-        <div class="detail-grid">
+    {% csrf_token %}
 
-            <div class="detail-item">
-                <span class="detail-label">Título</span>
-                <div class="campo">
-                    {{ form.titulo }}
-                </div>
-            </div>
-
-            <div class="detail-item">
-                <span class="detail-label">Categoria</span>
-                <div class="campo">
-                    {{ form.categoria }}
-                </div>
-            </div>
-
-            <div class="detail-item detail-grid-full">
-                <span class="detail-label">Descrição</span>
-                <div class="campo">
-                    {{ form.descricao }}
-                </div>
-            </div>
-
-            <div class="detail-item detail-item-status">
-                <span class="detail-label">Status</span>
-                <div class="campo">
-                    {{ form.status }}
-                </div>
-            </div>
-
+        <div class="campo">
+            <label>Nome</label>
+            {{ form.nome }}
         </div>
 
-        <div class="detail-actions">
-            <button type="submit" class="btn detail-action-btn">Salvar alterações</button>
-            <a href="{% url 'detalhe_chamado' chamado.id %}" class="btn btn-secondary detail-action-btn">Cancelar</a>
+        <div class="campo">
+            <label>Categoria</label>
+            {{ form.categoria }}
         </div>
+
+        <div class="campo">
+            <label>Quantidade</label>
+            {{ form.quantidade }}
+        </div>
+
+        <div class="campo">
+            <label>Estoque Mínimo</label>
+            {{ form.minimo }}
+        </div>
+
+        <div class="campo">
+            <label>Local</label>
+            {{ form.local }}
+        </div>
+
+        <div class="campo">
+            <label>Status</label>
+            {{ form.status }}
+        </div>
+
+        <button type="submit" class="btn">
+            Atualizar
+        </button>
+
     </form>
 
 </div>
