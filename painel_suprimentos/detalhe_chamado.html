@@ -1,0 +1,47 @@
+{% extends 'estoque/base.html' %}
+
+{% block content %}
+
+<h1>Chamado #{{ chamado.id }}</h1>
+
+<div class="card">
+
+    <p><strong>Usuário:</strong> {{ chamado.usuario.username }}</p>
+
+    <p><strong>Título:</strong> {{ chamado.titulo }}</p>
+
+    <p><strong>Categoria:</strong> {{ chamado.categoria }}</p>
+
+    <p><strong>Descrição:</strong></p>
+
+    <div class="descricao-box">
+        {{ chamado.descricao }}
+    </div>
+
+    <hr>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label>Status</label>
+
+        <select name="status">
+
+            <option value="ABERTO">Aberto</option>
+
+            <option value="ANDAMENTO">Em andamento</option>
+
+            <option value="FINALIZADO">Finalizado</option>
+
+        </select>
+
+        <button class="btn">
+            Atualizar Status
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
