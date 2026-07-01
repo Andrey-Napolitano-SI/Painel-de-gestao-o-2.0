@@ -54,3 +54,21 @@ class ChamadoForm(forms.ModelForm):
     class Meta:
         model = Chamado
         fields = ['titulo', 'categoria', 'descricao']
+        widgets = {
+            'titulo': forms.TextInput(attrs={'class': 'input'}),
+            'categoria': forms.Select(attrs={'class': 'input'}),
+            'descricao': forms.Textarea(attrs={'class': 'input', 'rows': 5}),
+        }
+
+
+class ChamadoEditForm(forms.ModelForm):
+
+    class Meta:
+        model = Chamado
+        fields = ['titulo', 'categoria', 'descricao', 'status']
+        widgets = {
+            'titulo': forms.TextInput(attrs={'class': 'input'}),
+            'categoria': forms.Select(attrs={'class': 'input'}),
+            'descricao': forms.Textarea(attrs={'class': 'input', 'rows': 5}),
+            'status': forms.Select(attrs={'class': 'input'}),
+        }
