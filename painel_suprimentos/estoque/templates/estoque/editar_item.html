@@ -1,19 +1,63 @@
 {% extends 'estoque/base.html' %}
 
+{% block title %}Editar Chamado{% endblock %}
+
 {% block content %}
 
-<h1>EDITAR ITEM</h1>
+<div class="container-form detalhe-card">
 
-<form method="POST">
+    <div class="detail-header">
+        <div>
+            <h1>Editar Chamado</h1>
+            <p class="detail-subtitle">Atualize o ticket e o status de atendimento.</p>
+        </div>
 
-    {% csrf_token %}
+        <div class="detail-status">
+            <span class="badge bg-secondary">#{{ chamado.id }}</span>
+        </div>
+    </div>
 
-    {{ form.as_p }}
+    <form method="POST" class="formulario">
+        {% csrf_token %}
 
-    <button type="submit">
-        Atualizar
-    </button>
+        <div class="detail-grid">
 
-</form>
+            <div class="detail-item">
+                <span class="detail-label">Título</span>
+                <div class="campo">
+                    {{ form.titulo }}
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">Categoria</span>
+                <div class="campo">
+                    {{ form.categoria }}
+                </div>
+            </div>
+
+            <div class="detail-item detail-grid-full">
+                <span class="detail-label">Descrição</span>
+                <div class="campo">
+                    {{ form.descricao }}
+                </div>
+            </div>
+
+            <div class="detail-item detail-item-status">
+                <span class="detail-label">Status</span>
+                <div class="campo">
+                    {{ form.status }}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="detail-actions">
+            <button type="submit" class="btn detail-action-btn">Salvar alterações</button>
+            <a href="{% url 'detalhe_chamado' chamado.id %}" class="btn btn-secondary detail-action-btn">Cancelar</a>
+        </div>
+    </form>
+
+</div>
 
 {% endblock %}
